@@ -1,0 +1,14 @@
+plugins { id 'com.android.library' }
+android {
+    namespace 'com.pynexia.week4.common'
+    compileSdk 35
+    defaultConfig { minSdk 26 }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
+dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation platform('com.google.firebase:firebase-bom:35.2.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    testImplementation 'junit:junit:4.13.2'
+}

@@ -1,0 +1,40 @@
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:168: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        shown.clear(); shown.addAll(result); adapter.notifyDataSetChanged();
+                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NotifyDataSetChanged":
+   The RecyclerView adapter's onNotifyDataSetChanged method does not specify
+   what about the data set has changed, forcing any observers to assume that
+   all existing items and structure may no longer be valid. `LayoutManager`s
+   will be forced to fully rebind and relayout all visible views.
+
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:100: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                if (status != null) status.setText("Live catalog · Firebase");
+                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:345: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        task.addOnSuccessListener(result -> { status.setText("Signed in · " + email); Toast.makeText(this, "Account ready", Toast.LENGTH_SHORT).show(); })
+                                                             ~~~~~~~~~~~~~~~~~~~~~~
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:345: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        task.addOnSuccessListener(result -> { status.setText("Signed in · " + email); Toast.makeText(this, "Account ready", Toast.LENGTH_SHORT).show(); })
+                                                             ~~~~~~~~~~~~~~
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:383: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+    private void updateCartLabel() { if (cartButton != null) cartButton.setText("Cart · " + cart.itemCount() + " · $" + String.format(Locale.US, "%.2f", subtotal())); }
+                                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Random Projects\Pynexia\week-4\common\src\main\java\com\pynexia\week4\common\CommerceActivity.java:383: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+    private void updateCartLabel() { if (cartButton != null) cartButton.setText("Cart · " + cart.itemCount() + " · $" + String.format(Locale.US, "%.2f", subtotal())); }
+                                                                                ~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 6 warnings
